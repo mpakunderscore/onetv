@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "child_process": "^1.0.2",
-    "onoff": "^4.16.3"
+    "onoff": "^3.2.1"
   }
 }

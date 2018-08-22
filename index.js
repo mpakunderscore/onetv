@@ -15,4 +15,6 @@ let pinIn = new Gpio(6, 'in', 'both');
 pinIn.watch(function (err, value) {
     if (value === 1)
         playVideo();
-})
+});
+
+playVideo();
