@@ -10,18 +10,15 @@ echo $VideoLocation
 # you can probably leave this alone
 Process="omxplayer"
 
+file=$(ls $VideoLocation | sort -R | tail -1);
+clear
+omxplayer -r "$VideoLocation/$file" > /dev/null
+
 # our loop
 while true; do
 
         if ps ax | grep -v grep | grep $Process > /dev/null
         then
         sleep 1;
-
-else
-
-        file=$(ls $VideoLocation | sort -R | tail -1);
-        clear
-        omxplayer -r "$VideoLocation/$file" > /dev/null
-
 fi
 done
