@@ -11,10 +11,9 @@ function playVideo() {
 
     if (startVideo) {
 
+        startVideo = false;
         process.kill(-player.pid);
         player = spawn('sh', ['player.sh', 'video.mp4', 'black.mp4'], {detached: true});
-
-        startVideo = false;
         setInterval( function () {startVideo = true}, 20000);
     }
 }
