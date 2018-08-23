@@ -5,14 +5,14 @@ let spawn = require('child_process').spawn;
 let player = {};
 let dark = {};
 
-dark = spawn('sh', ['black.sh', 'black.mp4'], {detached: true});
+dark = spawn('sh', ['player.sh', 'black.mp4', 'black.mp4'], {detached: true});
 
 function playVideo() {
     process.kill(-dark.pid);
-    player = spawn('sh', ['black.sh', 'black.mp4'], {detached: true});
+    player = spawn('sh', ['player.sh', 'video.mp4', 'black.mp4'], {detached: true});
 }
 
-playVideo();
+// playVideo();
 
 // function playDark() {
 //     process.kill(-player.pid);

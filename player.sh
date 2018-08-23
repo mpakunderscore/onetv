@@ -1,9 +1,7 @@
-
 #!/usr/bin/env bash
 
 # get rid of the cursor
 setterm -cursor off
-
 
 # you can probably leave this alone
 Process="omxplayer"
@@ -22,6 +20,5 @@ else
 
         clear
         omxplayer -r "/home/pi/onetv/videos/$2" > /dev/null
-
 fi
 done
