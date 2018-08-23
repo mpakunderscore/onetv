@@ -3,17 +3,18 @@ let Gpio = require('onoff').Gpio;
 let spawn = require('child_process').spawn;
 
 let player = {};
+let dark = {};
 
-player = spawn('sh', ['player.sh', folder], {detached: true});
+dark = spawn('sh', ['dark.sh'], {detached: true});
 
 function playVideo() {
-    process.kill(-player.pid);
+    process.kill(-dark.pid);
     player = spawn('sh', ['player.sh', 'video.pm4'], {detached: true});
 }
 
 function playDark() {
     process.kill(-player.pid);
-    player = spawn('sh', ['dark.sh', 'video.pm4'], {detached: true});
+    dark = spawn('sh', ['dark.sh'], {detached: true});
 }
 
 let pinOut = new Gpio(5, 'out');
@@ -24,4 +25,4 @@ pinIn.watch(function (err, value) {
         playVideo();
 });
 
-playDark()
+playDark();
