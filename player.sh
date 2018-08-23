@@ -1,14 +1,15 @@
+
 #!/usr/bin/env bash
 
 # get rid of the cursor
 setterm -cursor off
 
-# set here the path to the directory containing your videos
-VideoLocation="/home/pi/onetv/videos$1"
-echo $VideoLocation
 
 # you can probably leave this alone
 Process="omxplayer"
+
+clear
+omxplayer -r "/home/pi/onetv/videos/$1" > /dev/null
 
 # our loop
 while true; do
@@ -19,9 +20,8 @@ while true; do
 
 else
 
-        file=$(ls $VideoLocation | sort -R | tail -1);
         clear
-        omxplayer -r "$VideoLocation/$file" > /dev/null
+        omxplayer -r "/home/pi/onetv/videos/$2" > /dev/null
 
 fi
 done
