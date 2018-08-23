@@ -5,9 +5,18 @@ let spawn = require('child_process').spawn;
 let player = {};
 player = spawn('sh', ['player.sh', 'black.mp4', 'black.mp4'], {detached: true});
 
+let startVideo = true;
+
 function playVideo() {
-    process.kill(-player.pid);
-    player = spawn('sh', ['player.sh', 'video.mp4', 'black.mp4'], {detached: true});
+
+    if (startVideo) {
+
+        process.kill(-player.pid);
+        player = spawn('sh', ['player.sh', 'video.mp4', 'black.mp4'], {detached: true});
+
+        startVideo = false;
+        setInterval( function () {startVideo = true}, 20000);
+    }
 }
 
 const output = new Gpio(17, 'out');
