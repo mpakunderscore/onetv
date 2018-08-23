@@ -12,19 +12,12 @@ function playVideo() {
     player = spawn('sh', ['player.sh', 'video.mp4', 'black.mp4'], {detached: true});
 }
 
-// playVideo();
+const output = new Gpio(17, 'out');
+const input = new Gpio(4, 'in', 'both');
 
-// function playDark() {
-//     process.kill(-player.pid);
-//     dark = spawn('sh', ['dark.sh'], {detached: true});
-// }
-
-// let pinOut = new Gpio(5, 'out');
-// let pinIn = new Gpio(6, 'in');
+input.watch((err, value) => playVideo());
 
 // pinIn.watch(function (err, value) {
 //     if (value === 1)
 //         playVideo();
 // });
-
-// playDark();
